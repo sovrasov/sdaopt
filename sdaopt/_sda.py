@@ -411,10 +411,12 @@ class SDARunner(object):
                 # starting Markov chain
                 self.mc.run(i, temperature)
                 if self.owf.nb_fun_call >= self.maxfun:
+                    max_steps_reached = True
                     break
                 if not self.pure_sa:
                     self.mc.local_search()
                     if self.owf.nb_fun_call >= self.maxfun:
+                        max_steps_reached = True
                         break
 
     @property
